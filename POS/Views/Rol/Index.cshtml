@@ -1,0 +1,38 @@
+﻿@using POS.Model;
+@model IEnumerable<POS.Model.ROL>
+
+
+@{
+    ViewBag.Title = "Mantenimeinto de Roles";
+}
+
+<h2>Mantenimiento Roles</h2>
+
+<div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descipcion</th>
+                <th scope="col">Activo</th>
+                <th scope="col">@Html.ActionLink("Nuevo", "Nuevo",null, new { @class = "btn btn-primary" })</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (ROL m in @Model)
+            {
+
+            <tr scope="row">
+                <td>@m.idRol</td>
+                <td>@m.nombre</td>
+                <td>@m.decripcion</td>
+                <td>@m.activo</td>
+                <!--<td>@Html.ActionLink("Editar", "Editar", new { id = m.idRol })</td>-->
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

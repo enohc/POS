@@ -1,0 +1,37 @@
+﻿@model POS.Model.ROL
+
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+
+@using (Html.BeginForm("Nuevo", "Rol", FormMethod.Post))
+{
+    <h2>Nuevo registro para Menu</h2>
+
+    <table>
+        <tr>
+            <td>ID</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td>@Html.TextBoxFor(m => m.nombre)</td>
+        </tr>
+        <tr>
+            <td>Descipcion</td>
+            <td>@Html.TextBoxFor(m => m.decripcion)</td>
+        </tr>
+        <tr>
+            <td>Activo</td>
+            <td>@Html.TextBoxFor(m => m.activo)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Guardar" class="btn btn-primary"/></td>
+        </tr>
+    </table>
+}

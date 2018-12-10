@@ -1,0 +1,40 @@
+﻿@model POS.Model.USUARIO
+
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+
+@using (Html.BeginForm("Nuevo", "Usuario", FormMethod.Post))
+{
+    <h2>Nuevo registro para Menu</h2>
+
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>@Html.TextBoxFor(m => m.DUI)</td>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td>@Html.TextBoxFor(m => m.nombre)</td>
+        </tr>
+        <tr>
+            <td>Sexo</td>
+            <td>
+                @Html.RadioButtonFor(m => m.sexo, "M" ) M
+                @Html.RadioButtonFor(m => m.sexo, "F" ) F
+            </td>
+        </tr>
+        <tr>
+            <td>Activo</td>
+            <td>@Html.TextBoxFor(m => m.activo)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Guardar" class="btn btn-primary"/></td>
+        </tr>
+    </table>
+}

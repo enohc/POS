@@ -1,0 +1,38 @@
+﻿@using POS.Model;
+@model IEnumerable<POS.Model.USUARIO>
+
+
+@{
+    ViewBag.Title = "Mantenimeinto de Menus";
+}
+
+<h2>MtoMenu</h2>
+
+<div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">DUI</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Activo</th>
+                <th scope="col">@Html.ActionLink("Nuevo", "Nuevo",null, new { @class = "btn btn-primary" })</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (USUARIO m in @Model)
+            {
+
+            <tr scope="row">
+                <td>@m.DUI</td>
+                <td>@m.nombre</td>
+                <td>@m.ROL1.nombre</td>
+                <td>@m.activo</td>
+                <!--<td>@Html.ActionLink("Editar", "Editar", new { id = m.DUI })</td>-->
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
