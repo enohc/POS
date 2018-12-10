@@ -17,11 +17,10 @@ namespace POS.Controllers
             return View(q);
         }
 
-        [HttpPost]
         public ActionResult Mantenimentos(string page) {
-            string pages = "Mto" + page;
-            //return Redirect(pages);
-            return View(pages);        
+            //string pages = "Mto" + page;
+            return Redirect(page);
+            //return View(page);        
         }
     }
 }

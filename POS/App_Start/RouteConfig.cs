@@ -26,10 +26,13 @@ namespace POS
             );
 
             routes.MapRoute(
-                name: "Mantenimentos",
-                url: "Administrador/Mantenimentos/{id}",
-                defaults: new { controller = "Administrador", action = "Mantenimentos", id = UrlParameter.Optional }
+                name: "Menu",
+                url: "Menu/{action}/{id}",
+                defaults: new { controller = "Menu", action = "Index", id = UrlParameter.Optional }
             );
+
+
+
         }
     }
 }

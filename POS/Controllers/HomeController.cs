@@ -15,7 +15,7 @@ namespace POS.Controllers
         public ActionResult Index()
         {
             string page = "Login";
-            return View(page);       
+            return View(page);
         }
 
     [HttpPost]
