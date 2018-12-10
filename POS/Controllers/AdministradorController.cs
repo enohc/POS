@@ -16,9 +16,10 @@ namespace POS.Controllers
             var q = db.MENUs.ToList();   
             return View(q);
         }
-
+        
+        [HttpGet]
         public ActionResult Mantenimentos(string page) {
-            //string pages = "Mto" + page;
+            string pages = "../" + page;
             return Redirect(page);
             //return View(page);        
         }

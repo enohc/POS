@@ -28,11 +28,23 @@ namespace POS.Controllers
         {
             db.MENUs.InsertOnSubmit(m);
             db.SubmitChanges();
-            List<MENU> menus = db.MENUs.ToList();
             return Redirect("Index");
-            //return View("Index");
         }
 
+        [HttpGet]
+        public ActionResult Editar(string id)
+        {            
+            MENU menu = db.MENUs.Where( m => m.idMenu == int.Parse( id)).Single();
+            return View(menu);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(MENU m)
+        {
+            db.MENUs.GetModifiedMembers(m);
+            db.SubmitChanges();
+            return Redirect("Index");
+        }
 
     }
 }

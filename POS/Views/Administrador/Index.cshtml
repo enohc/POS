@@ -5,18 +5,18 @@
     ViewBag.Title = "Administrador";
 }
 
-<div>
-    <div style="display:inline-block; width:25%;">
-        <ul>
+<div class="container">
+    <div class="col-6 col-md-4">
+        <div class="dropdown-menu">
+
             @foreach (MENU m in @Model)
             {
                 <li>
                     @Html.ActionLink(m.pagina, "Mantenimentos", new { id = m.pagina })
                 </li>
             }
-        </ul>
+
+        </div>
+        </div>
+        <div class="col-6 col-md-4"></div>
     </div>
-    <div style="display:inline-block; width:75%"></div>
-</div>
-
-

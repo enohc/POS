@@ -7,12 +7,12 @@
 
 @using (Html.BeginForm("Nuevo", "Menu", FormMethod.Post))
 {
-    <h2>Nuevo registro para Menu</h2>
+    <h2>Modificar registro</h2>
 
     <table>
         <tr>
             <td>ID</td>
-            <td></td>
+            <td>@Html.TextBoxFor(m => m.idMenu)</td>
         </tr>
         <tr>
             <td>Nombre</td>

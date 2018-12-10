@@ -154,6 +154,7 @@
     <Content Include="Views\Administrador\Mantenimentos.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Menu\Nuevo.cshtml" />
+    <Content Include="Views\Menu\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

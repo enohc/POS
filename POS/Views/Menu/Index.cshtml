@@ -10,14 +10,14 @@
 
 <div>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descipcion</th>
-                <th>Activo</th>
-                <th>@Html.ActionLink("Nuevo", "Nuevo")</th>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descipcion</th>
+                <th scope="col">Activo</th>
+                <th scope="col">@Html.ActionLink("Nuevo", "Nuevo",null, new { @class = "btn btn-primary" })</th>
             </tr>
         </thead>
 
@@ -25,13 +25,13 @@
             @foreach (MENU m in @Model)
             {
 
-                <tr>
-                    <td>@m.idMenu</td>
-                    <td>@m.pagina</td>
-                    <td>@m.descripcion</td>
-                    <td>@m.activo</td>
-                    <td>@Html.ActionLink("Editar", "Nuevo", new { id = m.idMenu })</td>
-                </tr>
+            <tr scope="row">
+                <td>@m.idMenu</td>
+                <td>@m.pagina</td>
+                <td>@m.descripcion</td>
+                <td>@m.activo</td>
+                <!--<td>@Html.ActionLink("Editar", "Editar", new { id = m.idMenu })</td>-->
+            </tr>
             }
         </tbody>
     </table>

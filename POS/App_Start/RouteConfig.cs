@@ -21,7 +21,7 @@ namespace POS
 
             routes.MapRoute(
                 name: "Administrador",
-                url: "Administrador/{action}/{id}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Administrador", action = "Index", id = UrlParameter.Optional }
             );
 
