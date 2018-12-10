@@ -18,6 +18,18 @@ namespace POS
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Administrador",
+                url: "Administrador/{action}/{id}",
+                defaults: new { controller = "Administrador", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Mantenimentos",
+                url: "Administrador/Mantenimentos/{id}",
+                defaults: new { controller = "Administrador", action = "Mantenimentos", id = UrlParameter.Optional }
+            );
         }
     }
 }

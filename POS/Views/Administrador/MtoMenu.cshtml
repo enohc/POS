@@ -1,0 +1,37 @@
+﻿@using POS.Model;
+@model IEnumerable<POS.Model.MENU>
+
+@{
+    ViewBag.Title = "MtoMenu";
+}
+
+<h2>MtoMenu</h2>
+
+<div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descipcion</th>
+                <th>Activo</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (MENU m in @Model)
+            {
+
+                <tr>
+                    <td>@m.idMenu</td>
+                    <td>@m.pagina</td>
+                    <td>@m.descripcion</td>
+                    <td>@m.activo</td>
+                    <td>@Html.ActionLink("Editar", "edit", new { id = m.idMenu })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<POS.Model.MENU>
+
+@using POS.Model;
+@{
+    ViewBag.Title = "Administrador";
+}
+
+<div>
+    <div style="display:inline-block; width:25%;">
+        <ul>
+            @foreach (MENU m in @Model)
+            {
+                <li>
+                    @Html.ActionLink(m.pagina, "Mantenimentos", new { id = m.pagina })
+                </li>
+            }
+        </ul>
+    </div>
+    <div style="display:inline-block; width:75%"></div>
+</div>
+
+

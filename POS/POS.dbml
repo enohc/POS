@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MVCEmpleado" Class="POSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=MVCEmpleado;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MVCEmpleadoConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CATALOGO" Member="CATALOGOs">
+    <Type Name="CATALOGO">
+      <Column Name="idCatalogo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.String" DbType="VarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="catalogo" Member="catalogo1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="subCatalogo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CATALOGO_CATALOGO" Member="CATALOGOs" ThisKey="idCatalogo" OtherKey="catalogo1" Type="CATALOGO" />
+      <Association Name="CATALOGO_PRODUCTO" Member="PRODUCTOs" ThisKey="idCatalogo" OtherKey="tipo" Type="PRODUCTO" />
+      <Association Name="CATALOGO_CATALOGO" Member="CATALOGO2" ThisKey="catalogo1" OtherKey="idCatalogo" Type="CATALOGO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONFIG_PROMOCION" Member="CONFIG_PROMOCIONs">
+    <Type Name="CONFIG_PROMOCION">
+      <Column Name="producto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="promocion" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PRODUCTO_CONFIG_PROMOCION" Member="PRODUCTO1" ThisKey="producto" OtherKey="idProdcuto" Type="PRODUCTO" IsForeignKey="true" />
+      <Association Name="PROMOCION_CONFIG_PROMOCION" Member="PROMOCION1" ThisKey="promocion" OtherKey="idPromocion" Type="PROMOCION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MENU" Member="MENUs">
+    <Type Name="MENU">
+      <Column Name="idMenu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pagina" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="MENU_ROL_MENU" Member="ROL_MENUs" ThisKey="idMenu" OtherKey="menu" Type="ROL_MENU" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PRODUCTO" Member="PRODUCTOs">
+    <Type Name="PRODUCTO">
+      <Column Name="idProdcuto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="producto" Member="producto1" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="precio_venta" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PRODUCTO_CONFIG_PROMOCION" Member="CONFIG_PROMOCIONs" ThisKey="idProdcuto" OtherKey="producto" Type="CONFIG_PROMOCION" />
+      <Association Name="PRODUCTO_TICKET" Member="TICKETs" ThisKey="idProdcuto" OtherKey="producto" Type="TICKET" />
+      <Association Name="CATALOGO_PRODUCTO" Member="CATALOGO" ThisKey="tipo" OtherKey="idCatalogo" Type="CATALOGO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PROMOCION" Member="PROMOCIONs">
+    <Type Name="PROMOCION">
+      <Column Name="idPromocion" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="desde" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="hatas" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="precio_venta" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PROMOCION_CONFIG_PROMOCION" Member="CONFIG_PROMOCIONs" ThisKey="idPromocion" OtherKey="promocion" Type="CONFIG_PROMOCION" />
+      <Association Name="PROMOCION_TICKET" Member="TICKETs" ThisKey="idPromocion" OtherKey="promocion" Type="TICKET" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROL" Member="ROLs">
+    <Type Name="ROL">
+      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="decripcion" Type="System.String" DbType="VarChar(140)" CanBeNull="true" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ROL_ROL_MENU" Member="ROL_MENUs" ThisKey="idRol" OtherKey="rol" Type="ROL_MENU" />
+      <Association Name="ROL_USUARIO" Member="USUARIOs" ThisKey="idRol" OtherKey="rol" Type="USUARIO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROL_MENU" Member="ROL_MENUs">
+    <Type Name="ROL_MENU">
+      <Column Name="rol" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="menu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="MENU_ROL_MENU" Member="MENU1" ThisKey="menu" OtherKey="idMenu" Type="MENU" IsForeignKey="true" />
+      <Association Name="ROL_ROL_MENU" Member="ROL1" ThisKey="rol" OtherKey="idRol" Type="ROL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TICKET" Member="TICKETs">
+    <Type Name="TICKET">
+      <Column Name="idTicket" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="producto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="promocion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="PRODUCTO_TICKET" Member="PRODUCTO1" ThisKey="producto" OtherKey="idProdcuto" Type="PRODUCTO" IsForeignKey="true" />
+      <Association Name="PROMOCION_TICKET" Member="PROMOCION1" ThisKey="promocion" OtherKey="idPromocion" Type="PROMOCION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USUARIO" Member="USUARIOs">
+    <Type Name="USUARIO">
+      <Column Name="nombre" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="usuario" Member="usuario1" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DUI" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="rol" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ROL_USUARIO" Member="ROL1" ThisKey="rol" OtherKey="idRol" Type="ROL" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
